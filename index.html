@@ -16,13 +16,18 @@
     <a href="#" class="nav-logo">
       <img src="images/logo.png" alt="Ação Moradia" class="nav-logo-img" onerror="this.style.display='none'">
     </a>
-    <ul>
+    <ul id="nav-menu">
       <li><a href="https://app.clicksign.com/fluxia/62649e8d-8384-4a9b-9f2b-5b446a6e6a1e" target="_blank" rel="noopener noreferrer">Doe para Ação Moradia</a></li>
       <li><a href="#como-funciona">Como funciona</a></li>
       <li><a href="#finalizar">Finalizar destinação</a></li>
       <li><a href="#impacto">Impacto</a></li>
       <li><a href="#contadores">Contadores</a></li>
     </ul>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </nav>
 
   <!-- HERO -->
@@ -290,6 +295,27 @@
   </footer>
 
   <script>
+    /* ── HAMBURGER MENU ── */
+    (function () {
+      const btn  = document.getElementById('nav-hamburger');
+      const menu = document.getElementById('nav-menu');
+      btn.addEventListener('click', function () {
+        const open = menu.classList.toggle('open');
+        btn.classList.toggle('open', open);
+        btn.setAttribute('aria-expanded', open);
+      });
+      menu.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          menu.classList.remove('open');
+          btn.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+  </script>
+
+  <script>
+    /* ── CAROUSEL ── */
     (function () {
       const carousels = document.querySelectorAll('.carousel');
       carousels.forEach(function (carousel) {
